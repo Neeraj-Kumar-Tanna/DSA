@@ -1,27 +1,23 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
         if(nums.length == 0) return 0;
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
         int max = 1;
+        Set<Integer> s = new HashSet<>();
         for(int curr : nums){
-            pq.add(curr);
+            s.add(curr);
         }
-      
-        int curr = 1;
-        int value = pq.poll();
-        while(!pq.isEmpty()){
-            if(pq.peek() == value+1){
-                curr++;
+
+        for(int curr : s){
+            if(!s.contains(curr-1)){
+                int count = 1;
+                int x = curr;
+                while(s.contains(x+1)){
+                    count++;
+                    x++;
+                }
+                max = Math.max(max , count);
             }
-            else if(pq.peek() == value){
-                value = pq.poll();
-                continue;
-            }
-            else{
-                curr = 1;
-            }
-            value = pq.poll();
-            max = Math.max(max,curr);
         }
 
         return max;
