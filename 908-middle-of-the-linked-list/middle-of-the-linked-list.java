@@ -17,20 +17,25 @@ class Solution {
             temp = temp.next;
         }
 
-        int x = (len+1)/2;
+        int x = (len)/2 + 1;
         temp = head;
         int i = 1;
-        if(len%2 == 0){
-            while(i <= x){
-                temp = temp.next;
-                i++;
-            }
-        }
-        else{
-            while(i < x){
-                temp = temp.next;
-                i++;
-            }
+        // if(len%2 == 0){
+        //     while(i <= x){
+        //         temp = temp.next;
+        //         i++;
+        //     }
+        // }
+        // else{
+        //     while(i < x){
+        //         temp = temp.next;
+        //         i++;
+        //     }
+        // }
+
+        while(i < x){
+            temp = temp.next;
+            i++;
         }
 
         return temp;
