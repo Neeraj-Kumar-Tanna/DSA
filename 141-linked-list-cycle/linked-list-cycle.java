@@ -13,13 +13,14 @@ public class Solution {
     public boolean hasCycle(ListNode head) {
         boolean isLoop = false;
         ListNode temp = head;
-        Set<ListNode> s = new HashSet<>();
+        int count = 0 ;
         while(temp != null){
-            if(s.contains(temp)) return true;
+            count++;
+            if(count > 10000) return true;
 
-            s.add(temp);
             temp = temp.next;
         }
+
         return false;
     }
 }
