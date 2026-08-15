@@ -26,15 +26,14 @@ class Solution {
         //----------------------------
 
         
-        if(m < 0){
-            double n = m;
-            n = Math.abs(n);
+        double n = m;
+        n = Math.abs(n);
 
+        if(m < 0){
             double res = Math.pow(x , n);
             return 1/res;
         }
-        double n = m;
-        n = Math.abs(n);
+        
         return (double)Math.pow(x, n);
     }
 }
