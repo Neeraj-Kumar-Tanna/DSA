@@ -17,14 +17,14 @@ class Solution {
 
             while(dividend > (divisor<<(count+1))){
                 count++;
-                System.out.println((divisor<<(count+1)) + " cnt : " + count);
+                // System.out.println((divisor<<(count+1)) + " cnt : " + count);
             }
 
             ans += (1<<count);
             dividend = dividend - (divisor<<count);
-            System.out.println(dividend + " : ans " + ans + " vount : " + count);
+            // System.out.println(dividend + " : ans " + ans + " vount : " + count);
         }
-        System.out.println(1<<31);
+        // System.out.println(1<<31);
         if(ans > Integer.MAX_VALUE && pos == true){
             return Integer.MAX_VALUE;
         }
