@@ -2,14 +2,15 @@ class Solution {
     public String findDifferentBinaryString(String[] nums) {
       int n = nums[0].length();
       int len = nums.length;
-      // Arrays.sort(nums , (a,b)->{
-      //   for(int i = 0 ; i < n ; i++){
-      //     if(a.charAt(i) == b.charAt(i)) continue;
-      //     else if(a.charAt(i) > b.charAt(i)) return 1;
-      //     else return -1;
-      //   }
-      // });
-      Arrays.sort(nums);
+      Arrays.sort(nums , (a,b)->{
+        for(int i = 0 ; i < n ; i++){
+          if(a.charAt(i) == b.charAt(i)) continue;
+          else if(a.charAt(i) > b.charAt(i)) return 1;
+          else return -1;
+        }
+        return 0;
+      });
+      // Arrays.sort(nums);
       for(String cur : nums){
         System.out.println(cur);  
       }
