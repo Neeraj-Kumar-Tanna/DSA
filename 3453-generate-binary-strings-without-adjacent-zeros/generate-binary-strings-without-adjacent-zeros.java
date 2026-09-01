@@ -1,21 +1,24 @@
 class  Solution {
   public static List<String> res = new ArrayList<>();
     public List<String> validStrings(int n) {
-      List<String> tempRes = new ArrayList<>();
-      StringBuilder sb = new StringBuilder();
-      // System.out.println("sb :" + sb +":");
-      rec(n, sb);
+      List<String> res = new ArrayList<>();
+      rec2(n , "" , res);
 
-      List<String> temp = new ArrayList<>(res);
-      res.clear();
-
-      return temp;
+      return res;
 
 
+      // ----------------Approach#2-----------------------------------
+
+      // StringBuilder sb = new StringBuilder();
+      // rec(n, "");
+      // List<String> temp = new ArrayList<>(res);
+      // res.clear();
+
+      // return temp;
 
 
 
-
+        //----------Approach#1----------------------------------------
 
         // for(int i = 0 ; i < (1<<n) ; i++){
         //   // boolean isz = (i&1)==0 ? true : false;
@@ -43,10 +46,22 @@ class  Solution {
         // return res;
     }
 
-  public static void rec(int n , StringBuilder sb){
-    // System.out.println("sb :" + sb +":" + "n : " + n);
+  public static void rec2(int n , String s , List<String> res){
     if(n == 0){
-      // System.out.println("inside n = 0");
+      res.add(s);
+      return;
+    }
+
+    rec2(n-1 , s+"1" , res);
+
+    if(s.length() == 0 || (s.length() > 0 && s.charAt(s.length()-1) == '1')){
+      rec2(n-1, s+'0' , res);
+    }
+
+  }
+
+  public static void rec(int n , StringBuilder sb){
+    if(n == 0){
       res.add(sb.toString());
       return;
     }
@@ -60,10 +75,17 @@ class  Solution {
       rec(n-1 ,b);
     }
     else{
-      // System.out.println("inside else");
       StringBuilder b = new StringBuilder(sb);
       b.append('1');
       rec(n-1 , b);
     }
   }
+
+  // public static List<String> rec2(int n , StringBuilder sb){
+  //   if(n == 0){
+  //     return sb.toString();
+  //   }
+    
+  //   return 
+  // }
 }
