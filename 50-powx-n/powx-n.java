@@ -1,40 +1,25 @@
 class Solution {
-    public double myPow(double x, int m) {
-        // double a = x;
-        // double res = 1;
-        // boolean isNeg = false;
-        // if(m < 0){
-        //     isNeg = true;
-        // }
-
-        // long n = m;
-        // n = Math.abs(n);
-
-        // while(n > 0){
-        //     if((n&1) == 1){
-        //         res = res*a;
-        //     }
-        //     n >>= 1;
-        //     a = a*a;
-        //     System.out.println(a + "  : "+ res);
-        // }
-
-        // if(isNeg){
-        //     return 1/res;
-        // }
-
-        //----------------------------
-
-        
-        double n = m;
-        n = Math.abs(n);
-
-        if(m < 0){
-            double res = Math.pow(x , n);
-            return 1/res;
+    public double myPow(double x, int a) {
+        long n = a;
+        if(n < 0){
+            n = (long)Math.abs(n);
+            return 1/pow(x , x , n);
         }
-        
-        return (double)Math.pow(x, n);
+
+        return pow(x ,x, n);
+    }
+
+    public static double pow(double x ,double a , long n){
+        if(n <= 0){
+            return 1;
+        }
+
+        if((n&1)==1){
+          n >>= 1;
+          return a*pow(x , a*a , n);
+        }
+        n >>= 1;
+
+        return pow(x , a*a , n);
     }
 }
-
