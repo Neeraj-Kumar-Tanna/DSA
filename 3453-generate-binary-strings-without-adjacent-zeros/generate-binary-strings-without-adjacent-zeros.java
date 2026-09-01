@@ -44,14 +44,14 @@ class  Solution {
     }
 
   public static void rec(int n , StringBuilder sb){
-    System.out.println("sb :" + sb +":" + "n : " + n);
+    // System.out.println("sb :" + sb +":" + "n : " + n);
     if(n == 0){
-      System.out.println("inside n = 0");
+      // System.out.println("inside n = 0");
       res.add(sb.toString());
       return;
     }
     if(sb.length()==0 || (sb.length() > 0 && sb.charAt(sb.length()-1) == '1')){
-      System.out.println("inside if = 1");
+      // System.out.println("inside if = 1");
       StringBuilder a = new StringBuilder(sb);
       a.append('0');
       rec( n-1 , a);
@@ -60,7 +60,7 @@ class  Solution {
       rec(n-1 ,b);
     }
     else{
-      System.out.println("inside else");
+      // System.out.println("inside else");
       StringBuilder b = new StringBuilder(sb);
       b.append('1');
       rec(n-1 , b);
