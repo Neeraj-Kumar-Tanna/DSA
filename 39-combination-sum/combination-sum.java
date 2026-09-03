@@ -7,7 +7,7 @@ class Solution {
     }
 
     private static void rec( int ind ,int sum , List<Integer> data , int[] arr , List<List<Integer>> res , int target){
-      System.out.println(ind + " : " + data + " : " + sum);
+      // System.out.println(ind + " : " + data + " : " + sum);
       if(sum > target){
         return;
       }
@@ -23,7 +23,7 @@ class Solution {
         return;
       }
       if(sum == target){
-        System.out.println("sum in 2 : "+sum +" : " + data);
+        // System.out.println("sum in 2 : "+sum +" : " + data);
         List<Integer> temp = new ArrayList<>();
         for(int cur : data){
           temp.add(cur);
