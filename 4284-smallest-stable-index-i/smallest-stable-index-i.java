@@ -15,7 +15,7 @@ class Solution {
       int val = -1;
       for(int i = 0 ;i < len ; i++){
         int temp = max[i]-min[i];
-        System.out.println(temp);
+        // System.out.println(temp);
         if(temp <= k){
           // if(val==-1 || (max[val]-min[val])>temp) val = i;
           val = i ;
