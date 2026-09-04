@@ -9,11 +9,11 @@ class Solution {
 
     private static void rec(int ind , List<Integer> data , int[] arr , List<List<Integer>> res){
       res.add(new ArrayList<>(data));
-      if(ind == arr.length){
-        // res.add(new ArrayList<>(data));
-        // System.out.println("len : "+ data);
-        return;
-      }
+      // if(ind == arr.length){
+      //   // res.add(new ArrayList<>(data));
+      //   // System.out.println("len : "+ data);
+      //   return;
+      // }
 
       for(int i = ind ; i < arr.length ; i++){
         if(i > ind && arr[i]==arr[i-1]) continue;
