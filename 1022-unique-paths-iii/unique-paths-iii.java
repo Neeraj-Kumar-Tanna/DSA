@@ -1,17 +1,15 @@
 class Solution {
     public int uniquePathsIII(int[][] grid) {
-        int cnt = 0;
 
         for(int i = 0; i < grid.length ; i++){   
             for(int j = 0 ; j < grid[0].length ; j++){
                 if(grid[i][j] == 1){
-                    System.out.println("hi");
-                    cnt = rec(i , j , grid.length , grid[0].length , grid);
+                    return rec(i , j , grid.length , grid[0].length , grid);
                 }
             }
         }
 
-        return cnt;
+        return 0;
     }
 
     private static int rec(int i , int j ,int n , int m , int[][] grid){
