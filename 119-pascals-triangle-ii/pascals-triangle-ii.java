@@ -4,11 +4,11 @@ class Solution {
         if(j == 0 || i == j) return 1;
 
         long res = 1;
-        int den = 1;
+        // int den = 1;
         for(int a = Math.max(j , i-j)+1 ; a <= i ; a++){
             // System.out.println((res*a) + " ; " + (i-a+1));
-            res = (res*a)/den;
-            den++;
+            res = (res*a)/(a-Math.max(j , i-j));
+            // den++;
             // res = res*a;
         }
         // for(int a = 2 ; a <= Math.min(j , i-j); a++){
