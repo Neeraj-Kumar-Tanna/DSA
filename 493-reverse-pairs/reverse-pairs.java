@@ -1,67 +1,67 @@
 class Solution {
-    int count = 0;
-    int divide(int[] arr , int st , int end){
-        if(st == end) return 0;
-        int mid = (st+end)/2;
-        divide(arr , st , mid);
-        divide(arr , mid+1 , end);
-        add(arr , st , mid , end );
-        return count;
-    }
+    // int count = 0;
+    // int divide(int[] arr , int st , int end){
+    //     if(st == end) return 0;
+    //     int mid = (st+end)/2;
+    //     divide(arr , st , mid);
+    //     divide(arr , mid+1 , end);
+    //     add(arr , st , mid , end );
+    //     return count;
+    // }
 
-    int BinarySearch(int[] arr , int st , int end , int target){
-        int low = st , high = end , mid = (low+high)/2;
-        while(low<high){
-            if((long)arr[mid]*2 < target){
-                low = mid+1;
-                mid=(low+high)/2;
-            }
-            else{
-                high = mid-1;
-                mid = (low+high)/2;
-            }
-        }
-        System.out.println("high : " + high + " mid : "+mid + " low : " + low);
-        System.out.println("returning : " + ((long)arr[high]*2 >= target ? 0 : mid-st+1));
-        return (long)arr[high]*2 >= target ? 0 : high-st;
-    }
+    // int BinarySearch(int[] arr , int st , int end , int target){
+    //     int low = st , high = end , mid = (low+high)/2;
+    //     while(low<high){
+    //         if((long)arr[mid]*2 < target){
+    //             low = mid+1;
+    //             mid=(low+high)/2;
+    //         }
+    //         else{
+    //             high = mid-1;
+    //             mid = (low+high)/2;
+    //         }
+    //     }
+    //     System.out.println("high : " + high + " mid : "+mid + " low : " + low);
+    //     System.out.println("returning : " + ((long)arr[high]*2 >= target ? 0 : mid-st+1));
+    //     return (long)arr[high]*2 >= target ? 0 : high-st;
+    // }
 
-    void add(int[] arr , int st , int mid  , int end){
-        System.out.println("running : " + st + " - " + mid + " - " + end );
+    // void add(int[] arr , int st , int mid  , int end){
+    //     System.out.println("running : " + st + " - " + mid + " - " + end );
 
-        for(int i = st ; i <= mid ;i++){
-            count += BinarySearch(arr , mid+1 , end , arr[i]);
-            System.out.println("count at " + i +" " + arr[i] + " : " + count);
-        }
+    //     for(int i = st ; i <= mid ;i++){
+    //         count += BinarySearch(arr , mid+1 , end , arr[i]);
+    //         System.out.println("count at " + i +" " + arr[i] + " : " + count);
+    //     }
 
-        int i = st , j = mid+1;
-        int[] temp = new int[end-st+1];
-        int q = 0;
-        while(i <= mid && j <= end){
-            if(arr[i] <= arr[j]){
-                temp[q++] = arr[i];
-                i++;
-            }
-            else{
-                temp[q++] = arr[j];
-                j++;
-            }
-        }
-        while(j <= end){
-            temp[q++] = (arr[j]);
-            j++;
-        }
-        while(i <= mid){
-            temp[q++] = (arr[i]);
-            i++;
-        }
+    //     int i = st , j = mid+1;
+    //     int[] temp = new int[end-st+1];
+    //     int q = 0;
+    //     while(i <= mid && j <= end){
+    //         if(arr[i] <= arr[j]){
+    //             temp[q++] = arr[i];
+    //             i++;
+    //         }
+    //         else{
+    //             temp[q++] = arr[j];
+    //             j++;
+    //         }
+    //     }
+    //     while(j <= end){
+    //         temp[q++] = (arr[j]);
+    //         j++;
+    //     }
+    //     while(i <= mid){
+    //         temp[q++] = (arr[i]);
+    //         i++;
+    //     }
 
-        for(int p = 0 ; p < temp.length ;p++){
-            arr[st+p] = temp[p];
-        }
-        System.out.println("------done");
+    //     for(int p = 0 ; p < temp.length ;p++){
+    //         arr[st+p] = temp[p];
+    //     }
+    //     System.out.println("------done");
        
-    }
+    // }
 
     private int MergeSort(int[] nums , int low , int high){
         if(low == high) return 0;
