@@ -20,15 +20,17 @@ class Solution {
         //   max = Math.max(max , (p2-p1));
         //   p1 = p2-1;
         // }
+        max = Math.max(max , (p2-p1));
 
         if(((nums[p2]-nums[p2-1] < 0) && (nums[p1+1]-nums[p1] > 0)) || ((nums[p2]-nums[p2-1] > 0) && (nums[p1+1]-nums[p1] < 0))){
-          max = Math.max(max , (p2-p1));
+          // max = Math.max(max , (p2-p1));
           p1 = p2-1;
         }
         else if(nums[p2] == nums[p2-1]){
-          max = Math.max(max , (p2-p1));
+          // max = Math.max(max , (p2-p1));
           p1 = p2;
         }
+
 
         p2++;
       }
