@@ -1,76 +1,109 @@
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-
-
-      int low = newInterval[0] , high = newInterval[1];
-      int l = 0 , h = intervals.length-1;
-      while(l <= h){
-        int mid = (l+h)/2;
-        if(intervals[mid][1] >= low){
-          h = mid-1;
-        }
-        else{
-          l = mid+1;
-        }
-      }
-
-      int min_inter = l;
-      l = 0 ;
-      h = intervals.length-1;
-      while(l <= h){
-        int mid = (l + h)/2;
-        if(intervals[mid][0] <= high){
-          l = mid+1;
-        }
-        else{
-          h = mid-1;
-        }
-      }
-
-      int max_inter = h;
-      // System.out.println("min : " + min_inter + " max : " + max_inter);
+      int len = intervals.length;
 
       List<List<Integer>> res = new ArrayList<>();
-      
-      // if(min_inter > max_inter && max_inter == -1){
-      //   res.add(List.of(low , high));
-      // }
-      for(int i = 0 ; i < min_inter ; i++){
+      int i = 0;
+      while(i < len && intervals[i][1] < newInterval[0]){
         res.add(List.of(intervals[i][0] , intervals[i][1]));
+        i++;
       }
-      if(min_inter <= max_inter){
-        res.add(List.of(Math.min(low , intervals[min_inter][0]) , Math.max(high , intervals[max_inter][1])));
+      while(i < len &&  intervals[i][0] <= newInterval[1]){
+        newInterval[0] = Math.min(newInterval[0] , intervals[i][0]);
+        newInterval[1] = Math.max(newInterval[1] , intervals[i][1]);
+        i++;
       }
-      
-      for(int i = max_inter+1 ; i < intervals.length ; i++){
+      res.add(List.of(newInterval[0] , newInterval[1]));
+      while(i < len){
         res.add(List.of(intervals[i][0] , intervals[i][1]));
-      }
-      // if(min_inter > max_inter && min_inter == intervals.length){
-      //   res.add(List.of(low , high));
-      // }
-      if(min_inter > max_inter){
-        if(max_inter == -1){
-          List<Integer> temp = List.of(low , high);
-          res.add(0 , temp);
-        }
-        else if(min_inter == intervals.length){
-          res.add(List.of(low , high));
-        }
-        else{
-          List<Integer> temp = List.of(low , high);
-          res.add(min_inter , temp);
-          // res.insert(min_inter , List.of(low , high));
-        }
+        i++;
       }
 
+
       int[][] final_res = new int[res.size()][2];
-      for(int i = 0 ; i < res.size() ; i++){
-        // System.out.println(res.get(i).get(0) + " : " + res.get(i).get(1));
+      for( i = 0 ; i < res.size() ; i++){
+        System.out.println(res.get(i).get(0) + " : " + res.get(i).get(1));
         final_res[i][0] = res.get(i).get(0);
         final_res[i][1] = res.get(i).get(1);
       }
 
       return final_res;
+
+
+
+
+
+      //----Approach-3 -------------
+
+      // int low = newInterval[0] , high = newInterval[1];
+      // int l = 0 , h = intervals.length-1;
+      // while(l <= h){
+      //   int mid = (l+h)/2;
+      //   if(intervals[mid][1] >= low){
+      //     h = mid-1;
+      //   }
+      //   else{
+      //     l = mid+1;
+      //   }
+      // }
+
+      // int min_inter = l;
+      // l = 0 ;
+      // h = intervals.length-1;
+      // while(l <= h){
+      //   int mid = (l + h)/2;
+      //   if(intervals[mid][0] <= high){
+      //     l = mid+1;
+      //   }
+      //   else{
+      //     h = mid-1;
+      //   }
+      // }
+
+      // int max_inter = h;
+      // // System.out.println("min : " + min_inter + " max : " + max_inter);
+
+      // List<List<Integer>> res = new ArrayList<>();
+      
+      // // if(min_inter > max_inter && max_inter == -1){
+      // //   res.add(List.of(low , high));
+      // // }
+      // for(int i = 0 ; i < min_inter ; i++){
+      //   res.add(List.of(intervals[i][0] , intervals[i][1]));
+      // }
+      // if(min_inter <= max_inter){
+      //   res.add(List.of(Math.min(low , intervals[min_inter][0]) , Math.max(high , intervals[max_inter][1])));
+      // }
+      
+      // for(int i = max_inter+1 ; i < intervals.length ; i++){
+      //   res.add(List.of(intervals[i][0] , intervals[i][1]));
+      // }
+      // // if(min_inter > max_inter && min_inter == intervals.length){
+      // //   res.add(List.of(low , high));
+      // // }
+      // if(min_inter > max_inter){
+      //   if(max_inter == -1){
+      //     List<Integer> temp = List.of(low , high);
+      //     res.add(0 , temp);
+      //   }
+      //   else if(min_inter == intervals.length){
+      //     res.add(List.of(low , high));
+      //   }
+      //   else{
+      //     List<Integer> temp = List.of(low , high);
+      //     res.add(min_inter , temp);
+      //     // res.insert(min_inter , List.of(low , high));
+      //   }
+      // }
+
+      // int[][] final_res = new int[res.size()][2];
+      // for(int i = 0 ; i < res.size() ; i++){
+      //   // System.out.println(res.get(i).get(0) + " : " + res.get(i).get(1));
+      //   final_res[i][0] = res.get(i).get(0);
+      //   final_res[i][1] = res.get(i).get(1);
+      // }
+
+      // return final_res;
 
 
 
